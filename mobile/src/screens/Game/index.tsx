@@ -6,10 +6,10 @@ import { styles } from './styles';
 import { Entypo} from '@expo/vector-icons';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/logo-nlw-esports.png'
-import { TouchableOpacity, View, Image, FlatList } from 'react-native';
+import { TouchableOpacity, View, Image, FlatList, Text } from 'react-native';
 import { Heading } from '../../components/Heading';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, } from 'react';
 
 
 
@@ -71,9 +71,14 @@ export function Game() {
           />
         )}
         horizontal
-        contentContainerStyle={styles.contentList}
+        contentContainerStyle={[duos.length > 0 ? styles.contentList : styles.emptyListContent]}
         showsHorizontalScrollIndicator={false}
-        style={styles.containerList}
+        style={styles.containerList }
+        ListEmptyComponent={() => (
+          <Text style={styles.emptyListText}>
+              Não há anúncios publicados ainda.
+          </Text>
+        )}
       />
 
     </SafeAreaView>
